@@ -1,9 +1,16 @@
-@for(lesson of lessons; track lesson.id)
-{
-  <div>
-    <mat-card>
-      <mat-card-title>{{ lesson.title }}</mat-card-title>
-      <mat-card-content>{{ lesson.content }}</mat-card-content>
-    </mat-card>
-  </div>
-}
+<div>
+  @if(lessons.length > 0) {
+    @for(lesson of lessons; track lesson.id) {
+      <mat-card class="lesson-card">
+        <mat-card-header>
+          <mat-card-title>{{ lesson.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ lesson.content }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+  } @else {
+    <p>No lessons available.</p>
+  }
+</div>

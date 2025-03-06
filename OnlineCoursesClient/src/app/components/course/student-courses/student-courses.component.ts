@@ -5,11 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../../services/auth.service';
 import { CourseService } from '../../../services/course.service';
 import { Course } from '../../../models/course.model';
+import { RouterModule } from '@angular/router';
+import { LessonListComponent } from "../../lesson/lesson-list/lesson-list.component";
 
 @Component({
   selector: 'app-student-courses',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [RouterModule, CommonModule, MatCardModule, MatButtonModule, LessonListComponent],
   templateUrl: './student-courses.component.html',
   styleUrls: ['./student-courses.component.css']
 })

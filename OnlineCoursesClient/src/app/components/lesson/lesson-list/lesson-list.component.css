@@ -1,0 +1,22 @@
+.lesson-card {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 16px;
+}
+
+.lesson-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-title {
+  font-size: 1.5em;
+  color: #3f51b5;
+}
+
+mat-card-content p {
+  font-size: 1.1em;
+  color: #757575;
+}

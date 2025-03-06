@@ -1,17 +1,18 @@
-@if(course)
-{
-<div>
-    <h2>{{ course.title }}</h2>
-    <p>{{ course.description }}</p>
-    <app-lesson-list [courseId]="course.id"></app-lesson-list>
-    {{course.id}}
-    @if(isLoggedIn)
-    {
-    <button mat-button (click)="enroll()">Enroll in this Course</button>
-    }
+@if(course){
+<div class="course-detail-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ course.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ course.description }}</p>
+            <app-lesson-list></app-lesson-list>
+        </mat-card-content>
+    </mat-card>
 </div>
 }
-@else
-{
-<h2>Course not found!</h2>
+@else{
+<ng-template>
+    <h2>Course not found!</h2>
+</ng-template>
 }
