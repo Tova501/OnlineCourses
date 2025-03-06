@@ -13,6 +13,7 @@ import { UserManageComponent } from './components/user/user-manage/user-manage.c
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
+import { StudentCoursesComponent } from './components/course/student-courses/student-courses.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,5 +25,6 @@ export const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
   { path: 'manage-users', component: UserManageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  {path:'add-course',component:CourseAddComponent,canActivate:[AuthGuard]}
+  { path: 'add-course',component:CourseAddComponent,canActivate:[AuthGuard]},
+  { path: 'my-courses',component:StudentCoursesComponent,canActivate:[AuthGuard]} 
 ];

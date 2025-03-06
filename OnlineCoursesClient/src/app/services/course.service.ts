@@ -29,6 +29,11 @@ export class CourseService {
     return this.http.get<Course[]>(`${this.apiUrl}/teacher`, { headers });
   }
 
+  getCoursesByStudentId(studentId: number, token: string): Observable<Course[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Course[]>(`${this.apiUrl}/student/${studentId}`, { headers });
+  }
+
   createCourse(course: Course, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(this.apiUrl, course, { headers });
@@ -42,5 +47,18 @@ export class CourseService {
   deleteCourse(id: number, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
+  }
+
+  enrollInCourse(courseId: number, userId: number, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.apiUrl}/${courseId}/enroll`, { userId }, { headers });
+  }
+
+  unenrollFromCourse(courseId: number, userId: number, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${this.apiUrl}/${courseId}/unenroll`, {
+      headers,
+      body: { userId }
+    });
   }
 }

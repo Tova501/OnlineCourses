@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-course-list',
@@ -27,9 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent implements OnInit {
-  courses: Course[] = [];
+  constructor(private authService: AuthService, private courseService: CourseService) { }
 
-  constructor(private courseService: CourseService) { }
+  courses: Course[] = [];
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {
@@ -39,4 +40,26 @@ export class CourseListComponent implements OnInit {
     });
   }
 
+  enroll(courseId: number): void {
+    const token = this.authService.getToken();
+    const userId = this.authService.getUser().userId;
+
+    this.courseService.enrollInCourse(courseId, userId, token).subscribe(() => {
+      console.log('Enrolled in course successfully');
+      // Refresh the course list or update the UI as needed
+    }, error => {
+      console.error('Error enrolling in course:', error);
+    });
+  }
+
+  unenroll(courseId: number): void {
+    const token = this.authService.getToken();
+    const userId = this.authService.getUser().userId;
+
+    this.courseService.unenrollFromCourse(courseId, userId, token).subscribe(() => {
+      console.log('Unenrolled from course successfully');
+    }, error => {
+      console.error('Error unenrolling from course:', error);
+    });
+  }
 }
