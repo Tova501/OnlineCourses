@@ -1,0 +1,17 @@
+@if(course)
+{
+<div>
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+    <app-lesson-list [courseId]="course.id"></app-lesson-list>
+    {{course.id}}
+    @if(isLoggedIn)
+    {
+    <button mat-button (click)="enroll()">Enroll in this Course</button>
+    }
+</div>
+}
+@else
+{
+<h2>Course not found!</h2>
+}

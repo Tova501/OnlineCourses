@@ -1,0 +1,23 @@
+.dialog-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+  .close-button {
+    color: red;
+  }
+  .auth-card {
+    width: 100%;
+    height: 510px; /* Fixed height */
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px; /* Reduced round corners */
+  }
+  
+  mat-tab-group {
+    flex: 1;
+  }
+  
+  mat-tab {
+    padding: 16px;
+  }

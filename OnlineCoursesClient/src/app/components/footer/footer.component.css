@@ -1,0 +1,7 @@
+mat-toolbar {
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    color:white;
+  }

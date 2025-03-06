@@ -1,0 +1,27 @@
+<div class="register-container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+      @if(profileForm.get('name')?.hasError('required'))
+      {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role" required>
+        <mat-option value="student">Student</mat-option>
+        <mat-option value="teacher">Teacher</mat-option>
+        <mat-option value="admin">Admin</mat-option>
+      </mat-select>
+      @if(profileForm.get('role')?.hasError('required'))
+      {
+      <mat-error >Role is required</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="auth-button" type="submit">Update Profile</button>
+  </form>
+</div>

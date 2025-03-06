@@ -1,0 +1,16 @@
+<div class="lesson-add-container">
+    <h2>Add New Lesson</h2>
+    <form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="lessonForm.get('title')?.hasError('required')">Title is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="content"></textarea>
+        <mat-error *ngIf="lessonForm.get('content')?.hasError('required')">Content is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Add Lesson</button>
+    </form>
+  </div>

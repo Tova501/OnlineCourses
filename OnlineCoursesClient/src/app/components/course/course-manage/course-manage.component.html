@@ -1,0 +1,15 @@
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Teacher ID</mat-label>
+      <input matInput formControlName="teacherId">
+    </mat-form-field>
+    <button mat-raised-button type="submit">Create Course</button>
+  </form>

@@ -1,0 +1,11 @@
+<div>
+    @for(course of courses; track course.id)
+    {
+    <mat-card>
+        <mat-card-title>{{course.title }}</mat-card-title>
+        <mat-card-content>{{course.description }}</mat-card-content>
+        <button mat-button [routerLink]="['/courses', course.id]">View Details</button>
+        <button mat-button>Join</button>
+    </mat-card>
+    }
+</div>

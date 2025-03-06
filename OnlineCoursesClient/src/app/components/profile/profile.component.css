@@ -1,0 +1,37 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.register-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.auth-button {
+  width: 100%;
+  background-color: #00e622;
+  color: black;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.auth-button:hover {
+  background-color: #00b300;
+}
+
+mat-error {
+  color: red;
+  font-size: 14px;
+}

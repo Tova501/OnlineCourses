@@ -1,0 +1,15 @@
+<div class="manage-courses-container">
+    <h2>My Courses</h2>
+    <button mat-raised-button color="primary" routerLink="/add-course">Add New Course</button>
+   @for(course of courses; track course.id){
+    <div class="course-card">
+      <mat-card>
+        <app-course-detail></app-course-detail>
+        <mat-card-actions>
+          <button mat-button [routerLink]="['/course-manage', course.id]">Edit</button>
+          <button mat-button color="warn" (click)="deleteCourse(course.id)">Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+}
+</div>
