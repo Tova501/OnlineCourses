@@ -9,12 +9,12 @@
     Home
   </button>
 
+  @if(isLoggedIn){
+
   <button mat-button routerLink="/courses" class="nav-button">
     <mat-icon>book</mat-icon>
     Courses
   </button>
-  
-  @if(isLoggedIn){
 
   <button mat-button routerLink="/profile" class="nav-button">
     <mat-icon>account_circle</mat-icon>

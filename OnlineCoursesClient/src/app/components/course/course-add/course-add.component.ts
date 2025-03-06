@@ -61,7 +61,6 @@ export class CourseAddComponent {
         });
         this.router.navigate(['/manage-courses'])
       }, error => {
-        // Handle course creation error
         console.error(error);
       });
     }
