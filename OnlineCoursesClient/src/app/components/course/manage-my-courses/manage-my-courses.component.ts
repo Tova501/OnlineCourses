@@ -7,12 +7,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
+
 @Component({
   selector: 'app-manage-my-courses',
   templateUrl: './manage-my-courses.component.html',
   styleUrls: ['./manage-my-courses.component.css'],
   standalone: true,
-  imports: [MatCardModule,CourseDetailComponent, MatButtonModule, RouterModule, HttpClientModule]
+  imports: [MatCardModule, CourseDetailComponent, MatButtonModule, RouterModule, HttpClientModule]
 })
 export class ManageMyCoursesComponent implements OnInit {
   courses: Course[] = [];
@@ -21,9 +22,9 @@ export class ManageMyCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     const token = this.authService.getToken();
-    console.log('Token:', token); // Add this line
-    this.courseService.getTeacherCourses(token).subscribe(courses => {
-      this.courses = courses;
+    const userId = this.authService.getUser().userId;
+    this.courseService.getCourses().subscribe(courses => {
+      this.courses = courses.filter(course => course.teacherId == userId);
     }, error => {
       console.error('Error fetching teacher courses:', error);
     });
