@@ -54,9 +54,12 @@ export class CourseAddComponent {
 
   onSubmit() {
     if (this.courseForm.valid) {
-      this.courseService.createCourse(this.courseForm.value, this.authService.getToken()).subscribe(course => {
-        const courseId = course.id;
+      this.courseService.createCourse(this.courseForm.value, this.authService.getToken()).subscribe(res => {
+        const courseId = res.courseId;
+        console.log('course ', courseId);
+        console.log('res', res);
         const lessons = this.courseForm.value.lessons;
+        console.log('lessons', lessons);
         lessons.forEach((lesson: any) => {
           this.lessonService.createLesson(courseId, lesson, this.authService.getToken()).subscribe();
         });

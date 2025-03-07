@@ -6,14 +6,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { CourseDetailComponent } from '../course-detail/course-detail.component';
 
 @Component({
   selector: 'app-manage-my-courses',
   templateUrl: './manage-my-courses.component.html',
   styleUrls: ['./manage-my-courses.component.css'],
   standalone: true,
-  imports: [MatCardModule, CourseDetailComponent, MatButtonModule, RouterModule, HttpClientModule]
+  imports: [MatCardModule, MatButtonModule, RouterModule, HttpClientModule]
 })
 export class ManageMyCoursesComponent implements OnInit {
   courses: Course[] = [];
