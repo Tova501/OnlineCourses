@@ -2,27 +2,29 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h2, h3 {
   text-align: center;
-  color: #3f51b5;
+  color: #000;
   margin-bottom: 20px;
   font-family: 'Roboto', sans-serif;
 }
 
-.input-field {
+.input-field, .lesson-title, .lesson-content {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .lesson-form {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #00e622;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
@@ -33,26 +35,19 @@ h2, h3 {
   justify-content: space-between;
 }
 
-.lesson-title {
-  flex: 1;
-  margin-right: 10px;
+button {
+  background-color: #00e622;
+  color: #fff;
 }
 
-.lesson-content {
-  width: 100%;
+button:hover {
+  background-color: #00c91a;
 }
 
 mat-form-field {
   width: 100%;
 }
 
-button[mat-icon-button] {
-  margin-top: 0; /* הסרת המרווח העליון מהכפתור */
-}
-
-button[mat-raised-button] {
-  margin-top: 20px;
-  display: block;
-  width: auto; /* שינוי הרוחב של הכפתורים */
-  align-self: flex-start; /* מיקום הכפתורים בצד שמאל */
+mat-icon-button {
+  margin-left: 8px;
 }

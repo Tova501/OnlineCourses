@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CourseService } from '../../../services/course.service';
 import { Course } from '../../../models/course.model';
@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../../services/auth.service';
 import { LessonService } from '../../../services/lesson.service';
@@ -32,16 +32,17 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./course-manage.component.css']
 })
 export class CourseManageComponent implements OnInit {
+  courseForm: FormGroup;
   course: Course | undefined;
   isLoggedIn: boolean = false;
-  courseForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private courseService: CourseService,
+    private lessonService: LessonService,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private lessonService: LessonService
+    private router: Router
   ) {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
@@ -112,9 +113,17 @@ export class CourseManageComponent implements OnInit {
     if (this.courseForm.valid) {
       const course: Course = this.courseForm.value;
       this.courseService.updateCourse(this.course!.id, course, this.authService.getToken()).subscribe(response => {
-        // Handle course update success
+        const lessons = this.courseForm.value.lessons;
+        lessons.forEach((lesson: any) => {
+          if (lesson.id) {
+            this.lessonService.updateLesson(this.course!.id, lesson.id, lesson, this.authService.getToken()).subscribe();
+          } else {
+            this.lessonService.createLesson(this.course!.id, lesson, this.authService.getToken()).subscribe();
+          }
+        });
+        this.router.navigate(['manage-courses']);
       }, error => {
-        // Handle course update error
+        console.error('Error updating course:', error);
       });
     }
   }
