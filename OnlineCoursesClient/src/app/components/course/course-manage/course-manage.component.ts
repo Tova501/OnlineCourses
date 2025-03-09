@@ -115,6 +115,7 @@ export class CourseManageComponent implements OnInit {
       this.courseService.updateCourse(this.course!.id, course, this.authService.getToken()).subscribe(response => {
         const lessons = this.courseForm.value.lessons;
         lessons.forEach((lesson: any) => {
+          console.log('Updating lesson:', lesson); // הוספת לוג
           if (lesson.id) {
             this.lessonService.updateLesson(this.course!.id, lesson.id, lesson, this.authService.getToken()).subscribe();
           } else {

@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
 
     this.teacherSubscription = this.authService.isTeacher().subscribe(isTeacher => {
-      // this.isTeacher = isTeacher;
+       this.isTeacher = isTeacher;
     });
   }
 
